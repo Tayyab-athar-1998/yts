@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201215201633) do
+ActiveRecord::Schema.define(version: 20201215214316) do
 
   create_table "actors", force: :cascade do |t|
     t.string "name"
@@ -30,10 +30,24 @@ ActiveRecord::Schema.define(version: 20201215201633) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "genres_movies", id: false, force: :cascade do |t|
+    t.integer "movie_id", null: false
+    t.integer "genre_id", null: false
+    t.index ["genre_id", "movie_id"], name: "index_genres_movies_on_genre_id_and_movie_id"
+    t.index ["movie_id", "genre_id"], name: "index_genres_movies_on_movie_id_and_genre_id"
+  end
+
   create_table "languages", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "languages_movies", id: false, force: :cascade do |t|
+    t.integer "movie_id", null: false
+    t.integer "language_id", null: false
+    t.index ["language_id", "movie_id"], name: "index_languages_movies_on_language_id_and_movie_id"
+    t.index ["movie_id", "language_id"], name: "index_languages_movies_on_movie_id_and_language_id"
   end
 
   create_table "movie_roles", force: :cascade do |t|
@@ -51,6 +65,13 @@ ActiveRecord::Schema.define(version: 20201215201633) do
     t.text "synopsis"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "movies_video_qualities", id: false, force: :cascade do |t|
+    t.integer "movie_id", null: false
+    t.integer "video_quality_id", null: false
+    t.index ["movie_id", "video_quality_id"], name: "index_movies_video_qualities_on_movie_id_and_video_quality_id"
+    t.index ["video_quality_id", "movie_id"], name: "index_movies_video_qualities_on_video_quality_id_and_movie_id"
   end
 
   create_table "reviews", force: :cascade do |t|
