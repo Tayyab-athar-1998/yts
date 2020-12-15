@@ -1,0 +1,2 @@
+class VideoQuality < ApplicationRecord
+end

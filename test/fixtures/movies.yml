@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  number_of_downloads: 1.5
+  release_date: 2020-12-16
+  is_featured: false
+  synopsis: MyString
+
+two:
+  name: MyString
+  number_of_downloads: 1.5
+  release_date: 2020-12-16
+  is_featured: false
+  synopsis: MyString
