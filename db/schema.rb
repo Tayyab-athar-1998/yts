@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201215215301) do
+ActiveRecord::Schema.define(version: 20201216002840) do
 
   create_table "actors", force: :cascade do |t|
     t.string "name"
@@ -18,10 +18,15 @@ ActiveRecord::Schema.define(version: 20201215215301) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "feedbacks", force: :cascade do |t|
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "movie_id"
+    t.string "type"
+    t.index ["movie_id"], name: "index_feedbacks_on_movie_id"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -80,10 +85,14 @@ ActiveRecord::Schema.define(version: 20201215215301) do
     t.index ["video_quality_id", "movie_id"], name: "index_movies_video_qualities_on_video_quality_id_and_movie_id"
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.string "content"
+  create_table "ratings", force: :cascade do |t|
+    t.float "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "movie_id"
+    t.index ["movie_id"], name: "index_ratings_on_movie_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
