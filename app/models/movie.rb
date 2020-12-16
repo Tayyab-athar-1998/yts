@@ -12,7 +12,6 @@ class Movie < ApplicationRecord
   has_many :likes, class_name: :Like, as: :likeable
 
   has_and_belongs_to_many :genre
-  has_and_belongs_to_many :language
   has_and_belongs_to_many :video_quality
 
   belongs_to :created_by, class_name: :User, inverse_of: 'movies_created', foreign_key: 'user_id'
