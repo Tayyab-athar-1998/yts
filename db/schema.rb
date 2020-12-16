@@ -51,13 +51,6 @@ ActiveRecord::Schema.define(version: 20201216104117) do
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
   end
 
-  create_table "languages_movies", id: false, force: :cascade do |t|
-    t.integer "movie_id", null: false
-    t.integer "language_id", null: false
-    t.index ["language_id", "movie_id"], name: "index_languages_movies_on_language_id_and_movie_id"
-    t.index ["movie_id", "language_id"], name: "index_languages_movies_on_movie_id_and_language_id"
-  end
-
   create_table "likes", force: :cascade do |t|
     t.string "likeable_type"
     t.integer "likeable_id"
