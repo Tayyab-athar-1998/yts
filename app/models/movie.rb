@@ -14,4 +14,7 @@ class Movie < ApplicationRecord
 
   has_many :ratings
   has_many :rated_by_user, through: :ratings, class_name: :User
+
+  has_many :attached_images, class_name: :Image, as: :imageable
+  has_one :cover_photo, class_name: :Image, as: :imageable
 end

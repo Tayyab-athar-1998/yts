@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :ratings
   has_many :rated_movies, through: :feedback, class_name: :Movie
+
+  has_one :image, as: :imageable
 end
