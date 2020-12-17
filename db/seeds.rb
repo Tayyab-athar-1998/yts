@@ -11,3 +11,6 @@ load "#{Rails.root}/db/seeds/video_qualities.rb"
 
 puts 'Seeding actors....'
 load "#{Rails.root}/db/seeds/actors.rb"
+
+puts 'Seeding movies....'
+load "#{Rails.root}/db/seeds/movies.rb"
