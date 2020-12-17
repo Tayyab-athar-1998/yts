@@ -18,7 +18,7 @@ class Movie < ApplicationRecord
 
   validates :name, presence: true
   validates :release_date, presence: true
-  validates :release_date_is_date
+  validate :release_date_is_date
   validates :synopsis, presence: true
   validates :languages, presence: true, inclusion: {
     in: %w[english English Hindi hindi],
@@ -27,7 +27,7 @@ class Movie < ApplicationRecord
 
   private
 
-  def release_date_is_date?
+  def release_date_is_date
     errors.add(:release_date, 'must be a valid date') unless release_date.is_a?(Date)
   end
 end
