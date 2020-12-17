@@ -8,3 +8,6 @@ load "#{Rails.root}/db/seeds/genres.rb"
 
 puts 'Seeding video qualities....'
 load "#{Rails.root}/db/seeds/video_qualities.rb"
+
+puts 'Seeding actors....'
+load "#{Rails.root}/db/seeds/actors.rb"
