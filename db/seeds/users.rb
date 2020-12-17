@@ -6,7 +6,7 @@ User.where(email: 'root@test.com').first_or_create!(
   user_name: 'admin'
 )
 
-User.where(email: 'root@test.com').first_or_create!(
+User.where(email: 'test@test.com').first_or_create!(
   name: 'test',
   email: 'test@test.com',
   password: 'password',
@@ -14,7 +14,7 @@ User.where(email: 'root@test.com').first_or_create!(
   user_name: 'test'
 )
 
-User.where(email: 'root@test.com').first_or_create!(
+User.where(email: 'test1@test.com').first_or_create!(
   name: 'test1',
   email: 'test1@test.com',
   password: 'password',
