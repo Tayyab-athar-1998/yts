@@ -17,3 +17,6 @@ load "#{Rails.root}/db/seeds/movies.rb"
 
 puts 'Seeding movie roles....'
 load "#{Rails.root}/db/seeds/movie_roles.rb"
+
+puts 'Seeding movie ratings....'
+load "#{Rails.root}/db/seeds/ratings.rb"
