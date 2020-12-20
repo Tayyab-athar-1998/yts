@@ -12,6 +12,9 @@ class User < ApplicationRecord
   has_many :ratings
   has_many :rated_movies, through: :feedback, class_name: :Movie
 
+  has_many :movies, through: :likes, source: :likeable, source_type: 'Movie'
+  has_many :comments, through: :likes, source: :likeable, source_type: 'Comment'
+  
   validates :user_name, presence: true, uniqueness: true
   validates :name, presence: true
 end
