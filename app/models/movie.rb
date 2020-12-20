@@ -24,6 +24,8 @@ class Movie < ApplicationRecord
     message: '%<value> is not a allowed language'
   }
 
+  scope :order_by_number_of_downloads, -> { order(number_of_downloads: :desc) }
+  scope :latest_movies, -> { order(release_date: :desc) }
   private
 
   def release_date_is_date

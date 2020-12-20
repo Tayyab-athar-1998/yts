@@ -13,3 +13,29 @@
  */
 
  @import "bootstrap";
+
+.homepage-container{
+  padding-left: 0;
+  padding-right: 0;
+}
+.popular-downloads-container{
+  background-color: #1d1d1d;
+  text-align: center;
+}
+
+.latest-movies-container{
+  background-color: #171717;
+}
+
+.popular-downloads-wrapper{
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.latest-movies-wrapper{
+  @extend .popular-downloads-wrapper;
+  margin-top: 40px;
+}
