@@ -5,7 +5,7 @@ ActiveAdmin.register Rating do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :value, :user_id, :movie_id
+  permit_params :value, :user_id, :movie_id
   #
   # or
   #

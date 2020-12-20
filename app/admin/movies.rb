@@ -5,7 +5,7 @@ ActiveAdmin.register Movie do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name, :number_of_downloads, :release_date, :is_featured, :synopsis, :user_id, :languages
+  permit_params :name, :number_of_downloads, :release_date, :is_featured, :synopsis, :user_id, :languages
   #
   # or
   #
