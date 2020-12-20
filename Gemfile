@@ -61,3 +61,4 @@ end
 
 gem 'devise'
 gem 'mysql2'
+gem 'haml-rails'
