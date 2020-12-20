@@ -26,3 +26,6 @@ load "#{Rails.root}/db/seeds/comments.rb"
 
 puts 'Seeding movie reviews....'
 load "#{Rails.root}/db/seeds/reviews.rb"
+
+puts 'Seeding movie likes....'
+load "#{Rails.root}/db/seeds/likes.rb"
