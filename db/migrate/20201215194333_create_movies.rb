@@ -6,8 +6,8 @@ class CreateMovies < ActiveRecord::Migration[5.1]
       t.date :release_date
       t.boolean :is_featured
       t.text :synopsis
-      t.text :video_quality
-      t.text :languages
+      t.string :video_quality
+      t.string :languages
 
       t.timestamps
     end
