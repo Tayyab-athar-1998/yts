@@ -14,4 +14,6 @@ class Movie < ApplicationRecord
   has_and_belongs_to_many :video_quality
 
   belongs_to :created_by, class_name: :User, inverse_of: 'movies_created', foreign_key: 'user_id'
+
+  serialize :video_quality
 end
