@@ -8,6 +8,7 @@ class CreateMovies < ActiveRecord::Migration[5.1]
       t.text :synopsis
       t.string :video_quality
       t.string :languages
+      t.string :genres
 
       t.timestamps
     end
@@ -18,5 +19,6 @@ class CreateMovies < ActiveRecord::Migration[5.1]
     add_index :movies, :video_quality
     add_index :movies, :number_of_downloads
     add_index :movies, :languages
+    add_index :movies, :genres
   end
 end
