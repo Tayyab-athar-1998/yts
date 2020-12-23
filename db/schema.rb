@@ -29,19 +29,6 @@ ActiveRecord::Schema.define(version: 20201216104117) do
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 
-  create_table "genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "genres_movies", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-    t.bigint "movie_id", null: false
-    t.bigint "genre_id", null: false
-    t.index ["genre_id", "movie_id"], name: "index_genres_movies_on_genre_id_and_movie_id"
-    t.index ["movie_id", "genre_id"], name: "index_genres_movies_on_movie_id_and_genre_id"
-  end
-
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "path"
     t.datetime "created_at", null: false
@@ -80,9 +67,11 @@ ActiveRecord::Schema.define(version: 20201216104117) do
     t.text "synopsis"
     t.string "video_quality"
     t.string "languages"
+    t.string "genres"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.index ["genres"], name: "index_movies_on_genres"
     t.index ["is_featured"], name: "index_movies_on_is_featured"
     t.index ["languages"], name: "index_movies_on_languages"
     t.index ["name"], name: "index_movies_on_name"
