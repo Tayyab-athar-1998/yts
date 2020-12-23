@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201216231052) do
+ActiveRecord::Schema.define(version: 20201216104117) do
 
   create_table "actors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "name"
@@ -27,19 +27,6 @@ ActiveRecord::Schema.define(version: 20201216231052) do
     t.string "type"
     t.index ["movie_id"], name: "index_feedbacks_on_movie_id"
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
-  end
-
-  create_table "genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "genres_movies", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-    t.bigint "movie_id", null: false
-    t.bigint "genre_id", null: false
-    t.index ["genre_id", "movie_id"], name: "index_genres_movies_on_genre_id_and_movie_id"
-    t.index ["movie_id", "genre_id"], name: "index_genres_movies_on_movie_id_and_genre_id"
   end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -78,18 +65,20 @@ ActiveRecord::Schema.define(version: 20201216231052) do
     t.date "release_date"
     t.boolean "is_featured"
     t.text "synopsis"
+    t.string "video_quality"
+    t.string "languages"
+    t.string "genres"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.text "languages"
+    t.index ["genres"], name: "index_movies_on_genres"
+    t.index ["is_featured"], name: "index_movies_on_is_featured"
+    t.index ["languages"], name: "index_movies_on_languages"
+    t.index ["name"], name: "index_movies_on_name"
+    t.index ["number_of_downloads"], name: "index_movies_on_number_of_downloads"
+    t.index ["release_date"], name: "index_movies_on_release_date"
     t.index ["user_id"], name: "index_movies_on_user_id"
-  end
-
-  create_table "movies_video_qualities", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-    t.bigint "movie_id", null: false
-    t.bigint "video_quality_id", null: false
-    t.index ["movie_id", "video_quality_id"], name: "index_movies_video_qualities_on_movie_id_and_video_quality_id"
-    t.index ["video_quality_id", "movie_id"], name: "index_movies_video_qualities_on_video_quality_id_and_movie_id"
+    t.index ["video_quality"], name: "index_movies_on_video_quality"
   end
 
   create_table "ratings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -116,12 +105,6 @@ ActiveRecord::Schema.define(version: 20201216231052) do
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "video_qualities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-    t.string "resolution"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "feedbacks", "movies"
