@@ -24,6 +24,8 @@ class Movie < ApplicationRecord
     message: '%<value> is not a allowed language'
   }
 
+  serialize :video_quality
+
   private
 
   def release_date_is_date
