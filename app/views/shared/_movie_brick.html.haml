@@ -6,6 +6,6 @@
     = image_tag  "default.png"
   %div
     %p{style: 'color: #fff'}
-      = movie.name
+      = link_to "#{movie.name}", movie_path(movie)
     %p{style: 'color: #919191'}
       = movie.release_date

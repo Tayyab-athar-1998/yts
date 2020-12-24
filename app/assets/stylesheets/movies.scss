@@ -1,3 +1,102 @@
 // Place all the styles related to the movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.show-page-container{
+  background-color: #1d1d1d;
+}
+
+.show-movie-container{
+  color : #ffffff;
+  margin: auto;
+  width: 70%;
+}
+.show-movie-title{
+  font-size: 1.6em;
+  margin-bottom: 15px;
+  line-height: 20px;
+}
+.show-movie-DOR{
+  font-size: 1.1em;
+  line-height: 14px;
+  margin-bottom: 20px;
+}
+.show-movie-details{
+  padding-top: 40px;
+}
+.show-movie-cover{
+  height: 288px;
+}
+
+.show-movie-plot{
+  margin-top: 55px;
+}
+
+h1,h2,h3{
+  color: #ffffff;
+}
+
+.show-movie-synopsis{
+  margin-top: 24px;
+  color: #919191;
+}
+
+.show-movie-creation-time{
+  color: #919191;
+}
+
+.show-movie-staff{
+  height: 40px;
+  width: 40px;
+  border-radius: 150px;
+}
+
+.show-movie-director-container{
+  border-bottom: 1px solid #2f2f2f;
+  margin-top: 16px;
+  padding-bottom: 16px;
+}
+
+.show-movie-cast-container{
+  margin-top: 16px; 
+}
+
+.show-movie-comment-brick{
+  display: flex;
+  margin-bottom: 5px;
+  background-color:#171717;
+  padding: 20px
+}
+
+.show-movie-comment{
+  margin-left: 24px;
+  color: #919191;
+}
+
+.show-movie-comment-content{
+  color: #FFFFFF;
+}
+
+
+.show-movie-feedback{
+  margin-top: 40px;
+}
+
+.show-movie-review-brick{
+  padding: 30px 0px;
+  border-bottom: 1px solid #2f2f2f;
+}
+
+.show-movie-review{
+  color: #717171;
+}
+
+.show-movie-review-content{
+  color: #919191;
+  word-break: break-all;
+}
+
+.show-movie-comments-container{
+  max-height: 700px;
+  overflow-y: auto;
+}

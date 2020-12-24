@@ -1,5 +1,10 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :set_movie, only: [:edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+
+  def render_404
+    render :template => "errors/error_404", :status => 404
+  end
 
   # GET /movies
   # GET /movies.json
@@ -10,6 +15,17 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    @movie = Movie.includes(
+      :created_by, movie_roles: [:actor], feedback: [:user]
+    ).left_outer_joins(:likes, :ratings).select(
+      'movies.*, CAST(AVG(ratings.value) AS DECIMAL(10,2)) AS rating,count(likes.likeable_id) as number_of_likes'
+    ).find params[:id]
+    @reviews = @movie.feedback.select { |item| item.type == 'Review' }
+    @comments = @movie.feedback.select { |item| item.type == 'Comment' }
+    comment_ids = @comments.map(&:id)
+    @number_of_likes_on_comments = Comment.where_by_ids(comment_ids).calculate_number_of_likes
+    @directors = @movie.movie_roles.select { |role| role.role_played == 'director' }
+    @actors = @movie.movie_roles.select { |role| role.role_played == 'actor' }
   end
 
   # GET /movies/new
