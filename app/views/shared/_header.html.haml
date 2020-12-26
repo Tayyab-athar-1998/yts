@@ -6,13 +6,13 @@
       %form.form-inline
         %input.form-control.rounded-5{:placeholder => 'Quick search'}
     %li.nav-item
-      %a.nav-link{:herf => '#'} Home
+      = link_to "Home", "/", {class: 'nav-link'}
     %li.nav-item
-      %a.nav-link{:herf => '#'} 4k
+      = link_to "4K", "/movies?quality=4K", {class: 'nav-link'}
     %li.nav-item
-      %a.nav-link{:herf => '#'} Trending
+      = link_to "Trending", "/movies?order='count(likes.likeable_id) Desc'", {class: 'nav-link'}
     %li.nav-item
-      %a.nav-link{:herf => '#'} Browse Movies
+      = link_to "Browse Movies", "/movies", {class: 'nav-link'}
     - if current_user
       %li.nav-item
         = link_to('Logout', destroy_user_session_path,  :method=>'delete', :class=>"nav-link")     

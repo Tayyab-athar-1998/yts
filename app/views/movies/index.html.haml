@@ -1,19 +1,39 @@
-%h1 Listing movies
+.container-fluid.show-movies-search-container
+  .container.show-movies-result-wrapper
+    =form_tag(url_for(controller: :movies,action: :index),:method => "get") do |f|
+      .main-search-fields.col-lg-10
+        %p.search-terms-heading
+          Search Terms:
+        =text_field_tag "title","", id: 'search-input-field'
+        .search-select-containers
+          %p
+            Quality:
+          =select 'quality',"",{All: nil,"480p"=>"480p","720p"=>"720p","1080p"=>"1080p","4K"=>"4K"}
+        .search-select-containers
+          %p
+            Genres:
+          =select 'genre',"",{All: nil,SIFI: "SIFI",Comedy: "Comedy",Action: "Action"}
+        .search-select-containers
+          %p
+            Rating:
+          =select 'rating',"",{All: nil,"9+"=>9,"8+"=>8,"7+"=>7,"6+"=>6,"5+"=>5,"4+"=>4,"3+"=>3,"2+"=>2,"1+"=>1}
+        .search-select-containers
+          %p
+            Year:
+          =select 'year_of_release',"", {All: nil,"2020"=>"2020","2019"=>"2019","2015-2018"=>"2015-2018","1900-2014"=>"1900-2014"}
+        .search-select-containers
+          %p
+            Language:
+          =select 'language',"", {All: nil,Hindi: "Hindi",English: "English"}
+        .search-select-containers.search-select-container-last
+          %p
+            Order by:
+          =select 'order_by',"",  {Latest: "release_date Desc",Oldest: "release_date",Featured: "is_featured Desc",Year: "YEAR(release_date) Desc",Rating: "AVG(ratings.value) Desc",Likes: "count(likes.likeable_id) Desc",Aphabetical: "name"}
+      .main-search-button
+        %input{type: "submit", value: "Search", id: "temp"}
+.container-fluid.show-movies-result-container
+  .container
+    %h2{style: 'text-align:center'}
+      ="#{@movies.length} YIFY Movies found"
+    =render partial: "shared/movie_row", locals: {movies: @movies}
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
-
-  %tbody
-    - @movies.each do |movie|
-      %tr
-        %td= link_to 'Show', movie
-        %td= link_to 'Edit', edit_movie_path(movie)
-        %td= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Movie', new_movie_path
