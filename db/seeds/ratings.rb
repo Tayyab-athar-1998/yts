@@ -19,7 +19,7 @@ users.each do |user|
     Rating.where(movie_id: movie.id, user_id: user.id).first_or_create!(
       movie: movie,
       user: user,
-      value: rand(0...10)
+      value: rand(5...10)
     )
   end
 end
