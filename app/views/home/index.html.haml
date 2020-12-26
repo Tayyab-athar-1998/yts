@@ -4,10 +4,10 @@
       .row
         %h2.popular-downloads-wrapper
           Popular Downloads
-      =render partial: "shared/movie_row", locals: {movies: @movies_on_number_of_downlaods}
+      =render partial: 'shared/movie_row', locals: {movies: @movies_on_number_of_downlaods}
   .latest-movies-container
     .container
       .row
         %h2.latest-movies-wrapper
           Latest YIFY movies
-      =render partial: "shared/movie_row", locals: {movies: @latest_movies}
+      =render partial: 'shared/movie_row', locals: {movies: @latest_movies}
