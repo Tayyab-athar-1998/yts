@@ -1,9 +1,10 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:edit, :update, :destroy]
-  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  before_action :authenticate_user!, only: [:new]
+  rescue_from ActiveRecord::RecordNotFound, with: :render404
 
-  def render_404
-    render :template => "errors/error_404", :status => 404
+  def render404
+    render template: 'errors/error_404', status: 404
   end
 
   # GET /movies
@@ -52,17 +53,17 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.json
   def create
-    @movie = Movie.new(movie_params)
+    allowed_params = movie_params
+    allowed_params[:genres] = [allowed_params[:genres]]
+    allowed_params[:video_quality] = [allowed_params[:video_quality]]
+    print allowed_params
+    @movie = Movie.new(allowed_params)
+    @movie.created_by = current_user
 
-    respond_to do |format|
-      if @movie.save
-        format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
-        format.json { render :show, status: :created, location: @movie }
-      else
-        format.html { render :new }
-        format.json { render json: @movie.errors, status: :unprocessable_entity }
-      end
+    if @movie.save
+      redirect_to @movie
     end
+    render :new
   end
 
   # PATCH/PUT /movies/1
@@ -90,13 +91,14 @@ class MoviesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_movie
-      @movie = Movie.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def movie_params
-      params.fetch(:movie, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def movie_params
+    params.fetch(:movie, {}).permit(:name, :release_date, :synopsis, :video_quality, :languages, :genres)
+  end
 end
