@@ -2,3 +2,13 @@
   height: 315px;
   width: 210px;
 }
+
+.movie-brick-movie-title{
+  color: #fff;
+  margin-top: 8px;
+  margin-bottom: 0px;
+}
+.movie-brick-movie-release-date{
+  color: #919191;
+  margin-top: 0px;
+}

@@ -1,3 +1,225 @@
 // Place all the styles related to the movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.show-page-container{
+  background-color: #1d1d1d;
+}
+
+.show-movie-container{
+  color : #ffffff;
+  margin: auto;
+  width: 70%;
+}
+.show-movie-title{
+  font-size: 1.6em;
+  margin-bottom: 15px;
+  line-height: 20px;
+}
+.show-movie-DOR{
+  font-size: 1.1em;
+  line-height: 14px;
+  margin-bottom: 20px;
+}
+.show-movie-details{
+  padding-top: 40px;
+}
+.show-movie-cover{
+  height: 288px;
+}
+
+.show-movie-plot{
+  margin-top: 55px;
+}
+
+h1,h2,h3{
+  color: #ffffff;
+}
+
+.show-movie-synopsis{
+  margin-top: 24px;
+  color: #919191;
+}
+
+.show-movie-creation-time{
+  color: #919191;
+}
+
+.show-movie-staff{
+  height: 40px;
+  width: 40px;
+  border-radius: 150px;
+}
+
+.show-movie-director-container{
+  border-bottom: 1px solid #2f2f2f;
+  margin-top: 16px;
+  padding-bottom: 16px;
+}
+
+.show-movie-cast-container{
+  margin-top: 16px; 
+}
+
+.show-movie-comment-brick{
+  display: flex;
+  margin-bottom: 5px;
+  background-color:#171717;
+  padding: 20px
+}
+
+.movie-comment-input-brick{
+  @extend .show-movie-comment-brick;
+  flex-direction: column;
+}
+
+.show-movie-comment{
+  margin-left: 24px;
+  color: #919191;
+}
+
+.show-movie-comment-content{
+  color: #FFFFFF;
+}
+
+
+.show-movie-feedback{
+  margin-top: 40px;
+}
+
+.show-movie-review-brick{
+  padding: 30px 0px;
+  border-bottom: 1px solid #2f2f2f;
+}
+
+.show-movie-review{
+  color: #717171;
+}
+
+.show-movie-review-content{
+  color: #919191;
+  word-break: break-all;
+}
+
+.show-movie-comments-container{
+  max-height: 700px;
+  overflow-y: auto;
+}
+
+.show-movies{
+  text-align: center;
+}
+
+.show-movies-search-container{
+  background-color: #171717;
+  padding: 50px 0px;
+}
+
+.show-movies-result-container{
+  background-color: #1d1d1d;
+}
+
+.show-movies-result-wrapper{
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 15px;
+}
+
+.search-terms-heading{
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #5a5a5a;
+  font-size: 1.35em;
+}
+
+#search-input-field{
+  border:0;
+  color: #a2a2a2;
+  padding: 10px;
+  height: 40px;
+  background: #282828;
+  width: 100%;
+}
+
+.search-select-containers{
+  width: 130px;
+  margin-right: 18px;
+  display: inline-block;
+}
+
+.search-select-container-last{
+  margin-right: 0px;
+}
+.search-select-containers p{
+  @extend .search-terms-heading;
+  font-size: .9em;
+}
+.search-select-containers select{
+  margin: 0px;
+  padding-left: 10px;
+  width: 120px;
+  color: #a2a2a2;
+  background-color: #282828;
+  border: 0;
+  height: 40px;
+}
+
+.main-search-fields{
+  display: inline-block;
+}
+
+.main-search-button{
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 41px;
+  vertical-align: top;
+}
+
+#temp{
+  color: #ffffff;
+  background-color: #6ac045;
+  font-weight: bold;
+  font-size: 16px;
+  height: 36px;
+  background-image: none;
+  border-radius: 0px;
+}
+
+.no-login-comment-link{
+  margin-left: auto !important;
+  margin-right: auto !important;
+  font-weight: bold !important;
+  color: #FFFFFF !important;
+}
+
+.new-comment-input{
+  width: 75%;
+  box-shadow: none;
+  border: 0;
+  padding: 10px;
+  color: #a2a2a2;
+  background: #1d1d1d;
+  font-size: 13px;
+  resize: none;
+  height: 39px;
+}
+
+#new-comment-submit{
+  box-shadow: none;
+  background: none;
+  color: #919191;
+  font-size: .9em;
+  border: 0;
+}
+
+.spinner-wrapper{
+  display: none;
+}
+
+.comment-input-wrapper{
+  display: flex;
+}
+
+.no-comment-written{
+  display: none;
+}

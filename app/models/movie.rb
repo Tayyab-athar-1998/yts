@@ -23,6 +23,15 @@ class Movie < ApplicationRecord
 
   scope :most_downloaded, -> { order(number_of_downloads: :desc) }
   scope :latest_movies, -> { order(release_date: :desc) }
+  scope :search_on_language, ->(language) { where(languages: language) unless language.nil? || language.empty? }
+  scope :search_on_genre, ->(genre) { where('genres LIKE ?', "%#{genre}%") unless genre.nil? || genre.empty? }
+  scope :search_on_starting_year, ->(year_of_release) { where('YEAR(release_date) >= ?', year_of_release) unless year_of_release.nil? || year_of_release.empty?}
+  scope :search_on_ending_year, ->(year_of_release) { where('YEAR(release_date) <= ?', year_of_release) unless year_of_release.nil? || year_of_release.empty?}
+  scope :search_on_video_quality, ->(video_quality) { where('video_quality LIKE ?', "%#{video_quality}%") unless video_quality.nil? || video_quality.empty?}
+  scope :search_on_title, ->(title) { where('name LIKE ?', "%#{title}%") unless title.nil? || title.empty? }
+
+  scope :search_on_rating, ->(minimum_rating) { left_outer_joins(:ratings).group('id').having('AVG(ratings.value) > ?', minimum_rating) unless minimum_rating.nil? || minimum_rating.empty?}
+  scope :order_on_filter, ->(column_with_order) { left_outer_joins(:ratings, :likes).group('id').order(column_with_order) unless column_with_order.nil? || column_with_order.empty?}
 
   private
 

@@ -1,0 +1,40 @@
+.container
+  = form_with model: @movie,local: true do |movie_form|
+    .form-group
+      = movie_form.label :name, 'Movie Title'
+      - @movie.errors.full_messages_for(:name).each do |message|
+        .text-danger
+          = message
+      = movie_form.text_field :name, class: 'form-control'
+    .form-group
+      = movie_form.label :synopsis, 'Synopsis'
+      - @movie.errors.full_messages_for(:synopsis).each do |message|
+        .text-danger
+          = message
+      = movie_form.text_area :synopsis, size: "60x10", class: 'form-control'
+    .form-group
+      = movie_form.label :languages, 'Language'
+      - @movie.errors.full_messages_for(:languages).each do |message|
+        .text-danger
+          = message
+      = movie_form.select :languages, ["Hindi", "English"], selected: "English", class: 'form-control'
+    .form-group
+      = movie_form.label :release_date, 'Release Date'
+      - @movie.errors.full_messages_for(:release_date).each do |message|
+        .text-danger
+          = message
+      = movie_form.date_select :release_date, class: 'form-control'
+    .form-group
+      = movie_form.label :video_quality, 'Video Quality'
+      - @movie.errors.full_messages_for(:video_quality).each do |message|
+        .text-danger
+          = message
+      = movie_form.select :video_quality, ["480p","720p","1080p","4K"], selected: "480p", class: 'form-control'
+    .form-group
+      = movie_form.label :genres, 'Genres'
+      - @movie.errors.full_messages_for(:genres).each do |message|
+        .text-danger
+          = message
+      = movie_form.select :genres, ["SIFI", "Comedy", "Action"], selected: "SIFI", class: 'form-control'
+    .actions
+      = movie_form.submit 'Save', class: 'btn btn-primary'

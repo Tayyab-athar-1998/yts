@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get '/', to: 'home#index'
+
+  resources :movies do
+    resources :feedbacks, only: [:create, :update, :destroy], shallow: true
+  end
 end

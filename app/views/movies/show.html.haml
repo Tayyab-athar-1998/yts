@@ -1,0 +1,78 @@
+.container-fluid.show-page-container
+  .container.show-movie-details
+    .row
+      .col-lg-3
+        = image_tag  "default.png", class: "show-movie-cover"
+      .col-lg-6
+        .show-movie-container
+          %h1.show-movie-title
+            = @movie.name
+          %h2.show-movie-DOR
+            = @movie.release_date
+          %h2.show-movie-DOR
+            - @movie.genres.each do |genre|
+              =genre
+          %h2.show-movie-DOR
+            Avaliable in
+            - @movie.video_quality.each do |video_quality|
+              =video_quality
+          %h2.show-movie-DOR
+            = @movie.number_of_likes
+          %h2.show-movie-DOR
+            = @movie.rating
+      .col-lg-3
+        %h2.show-movie-DOR
+          Similar movies
+  .container.show-movie-plot
+    .row
+      .col-lg-8
+        %h3
+          Synopsis
+        .show-movie-synopsis
+          =@movie.synopsis
+        .show-movie-synopsis
+          %em
+            Uploaded By:
+            =@movie.created_by.user_name
+        .show-movie-creation-time
+          =@movie.updated_at
+      .col-lg-4
+        .show-movie-director-container
+          %h3
+            Director
+          - @directors.each do |director|
+            .show-movie-creation-time
+              = image_tag  "default_avatar.jpg", class: "show-movie-staff"
+              = director.actor.name
+        %h3
+          Cast
+        - @actors.each do |actor|     
+          .show-movie-creation-time    
+            = image_tag  "default_avatar.jpg", class: "show-movie-staff"
+            ="#{actor.actor.name} as #{actor.staring_as}"
+  .container.show-movie-feedback
+    .row
+      .col-lg-6
+        %h3
+          ="#{@comments.length} Comments"
+        .show-movie-comments-container
+          - @comments.each do|comment|
+            =render partial: "comment_brick", locals: {comment: comment}
+        .movie-comment-input-brick
+          - if current_user
+            .text-center.spinner-wrapper.ml-auto.mr-auto
+              .spinner-border{role: :status}
+                %span.sr-only
+                  Loading....
+            .text-danger.no-comment-written
+              No comment written....
+            .comment-input-wrapper
+              %textarea.new-comment-input{placeholder: 'Add a new comment'}
+              %input#new-comment-submit.ml-auto{type:'Submit',value:'Submit',onClick:'addNewMovieComment()'}
+          - else
+            = link_to 'Login to leave a comment', '/users/sign_in', {class: 'no-login-comment-link no-underline-link'}
+      .col-lg-6
+        %h3
+          Movie Reviews
+        - @reviews.each do |review|
+          =render partial: "review_brick", locals: {review: review}

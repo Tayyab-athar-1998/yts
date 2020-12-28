@@ -1,0 +1,9 @@
+.show-movie-comment-brick
+  %div
+    = image_tag  "default_avatar.jpg", class: "show-movie-staff"
+  .show-movie-comment
+    %div
+      = comment.user.user_name
+      = comment.created_at
+    .show-movie-comment-content
+      = comment.content
