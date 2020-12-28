@@ -1,4 +1,7 @@
 class Movie < ApplicationRecord
+  serialize :video_quality
+  serialize :genres
+
   has_one :cover_photo, class_name: :Image, as: :imageable, dependent: :destroy
 
   has_many :ratings, dependent: :destroy
@@ -18,8 +21,8 @@ class Movie < ApplicationRecord
     message: '%<value> is not a allowed language'
   }
 
-  serialize :video_quality
-  serialize :genres
+  scope :most_downloaded, -> { order(number_of_downloads: :desc) }
+  scope :latest_movies, -> { order(release_date: :desc) }
 
   private
 
