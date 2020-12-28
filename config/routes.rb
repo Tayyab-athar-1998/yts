@@ -8,5 +8,7 @@ Rails.application.routes.draw do
 
   get '/', to: 'home#index'
 
-  resources :movies
+  resources :movies do
+    resources :feedbacks, only: [:create, :update, :destroy], shallow: true
+  end
 end

@@ -68,6 +68,11 @@ h1,h2,h3{
   padding: 20px
 }
 
+.movie-comment-input-brick{
+  @extend .show-movie-comment-brick;
+  flex-direction: column;
+}
+
 .show-movie-comment{
   margin-left: 24px;
   color: #919191;
@@ -178,4 +183,43 @@ h1,h2,h3{
   height: 36px;
   background-image: none;
   border-radius: 0px;
+}
+
+.no-login-comment-link{
+  margin-left: auto !important;
+  margin-right: auto !important;
+  font-weight: bold !important;
+  color: #FFFFFF !important;
+}
+
+.new-comment-input{
+  width: 75%;
+  box-shadow: none;
+  border: 0;
+  padding: 10px;
+  color: #a2a2a2;
+  background: #1d1d1d;
+  font-size: 13px;
+  resize: none;
+  height: 39px;
+}
+
+#new-comment-submit{
+  box-shadow: none;
+  background: none;
+  color: #919191;
+  font-size: .9em;
+  border: 0;
+}
+
+.spinner-wrapper{
+  display: none;
+}
+
+.comment-input-wrapper{
+  display: flex;
+}
+
+.no-comment-written{
+  display: none;
 }

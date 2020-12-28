@@ -58,6 +58,19 @@
         .show-movie-comments-container
           - @comments.each do|comment|
             =render partial: "comment_brick", locals: {comment: comment}
+        .movie-comment-input-brick
+          - if current_user
+            .text-center.spinner-wrapper.ml-auto.mr-auto
+              .spinner-border{role: :status}
+                %span.sr-only
+                  Loading....
+            .text-danger.no-comment-written
+              No comment written....
+            .comment-input-wrapper
+              %textarea.new-comment-input{placeholder: 'Add a new comment'}
+              %input#new-comment-submit.ml-auto{type:'Submit',value:'Submit',onClick:'addNewMovieComment()'}
+          - else
+            = link_to 'Login to leave a comment', '/users/sign_in', {class: 'no-login-comment-link no-underline-link'}
       .col-lg-6
         %h3
           Movie Reviews
