@@ -64,3 +64,7 @@ gem 'mysql2'
 gem 'haml-rails'
 gem 'bootstrap'
 gem 'jquery-rails'
+
+gem 'activeadmin'
+gem 'cancancan'
+gem 'draper'
