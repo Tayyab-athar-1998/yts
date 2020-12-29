@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20201220230102) do
     t.string "video_quality"
     t.string "languages"
     t.string "genres"
+    t.integer "feedbacks_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
