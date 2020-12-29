@@ -17,9 +17,9 @@
             - @movie.video_quality.each do |video_quality|
               =video_quality
           %h2.show-movie-DOR
-            = @movie.number_of_likes
+            = "Likes: #{@movie.number_of_likes}"             
           %h2.show-movie-DOR
-            = @movie.rating
+            = "Rating: #{@movie.rating}"
       .col-lg-3
         %h2.show-movie-DOR
           Similar movies
