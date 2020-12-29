@@ -2,7 +2,10 @@
   .container.show-movie-details
     .row
       .col-lg-3
-        = image_tag  "default.png", class: "show-movie-cover"
+        - if @movie.cover_photo.nil?
+          = image_tag  "default.png", class: "show-movie-cover"
+        - else
+          = image_tag  @movie.cover_photo.path, class: "show-movie-cover" 
       .col-lg-6
         .show-movie-container
           %h1.show-movie-title

@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
     genre = params[:genre][0] unless params[:genre].nil?
     rating = params[:rating][0] unless params[:rating].nil?
     order_by = params[:order_by][0] unless params[:order_by].nil?
-    @movies = Movie.search_on_title(params[:title]).search_on_language(language).search_on_starting_year(
+    @movies = Movie.includes(:cover_photo).search_on_title(params[:title]).search_on_language(language).search_on_starting_year(
       starting_year
     ).search_on_ending_year(ending_year).search_on_video_quality(quality).search_on_genre(
       genre
@@ -29,7 +29,7 @@ class MoviesController < ApplicationController
   # GET /movies/1.json
   def show
     @movie = Movie.includes(
-      :created_by, movie_roles: [:actor], feedback: [:user]
+      :cover_photo, :created_by, movie_roles: [:actor], feedback: [:user]
     ).left_outer_joins(:likes, :ratings).select(
       'movies.*, CAST(AVG(ratings.value) AS DECIMAL(10,2)) AS rating,count(likes.likeable_id) as number_of_likes'
     ).find params[:id]
@@ -44,6 +44,7 @@ class MoviesController < ApplicationController
   # GET /movies/new
   def new
     @movie = Movie.new
+    @movie.build_cover_photo
   end
 
   # GET /movies/1/edit
@@ -56,14 +57,14 @@ class MoviesController < ApplicationController
     allowed_params = movie_params
     allowed_params[:genres] = [allowed_params[:genres]]
     allowed_params[:video_quality] = [allowed_params[:video_quality]]
-    print allowed_params
     @movie = Movie.new(allowed_params)
     @movie.created_by = current_user
 
     if @movie.save
       redirect_to @movie
+    else
+      render :new
     end
-    render :new
   end
 
   # PATCH/PUT /movies/1
@@ -99,6 +100,8 @@ class MoviesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def movie_params
-    params.fetch(:movie, {}).permit(:name, :release_date, :synopsis, :video_quality, :languages, :genres)
+    params.fetch(:movie, {}).permit(
+      :name, :release_date, :synopsis, :video_quality, :languages, :genres, cover_photo_attributes: [:path]
+    )
   end
 end

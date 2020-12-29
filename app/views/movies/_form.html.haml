@@ -36,5 +36,8 @@
         .text-danger
           = message
       = movie_form.select :genres, ["SIFI", "Comedy", "Action"], selected: "SIFI", class: 'form-control'
+    = movie_form.fields_for :cover_photo do |image_fields|
+      = image_fields.label :path, 'Cover photo'
+      = image_fields.file_field :path
     .actions
       = movie_form.submit 'Save', class: 'btn btn-primary'

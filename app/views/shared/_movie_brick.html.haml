@@ -1,9 +1,9 @@
-- content_for :head do
-  %link{rel: 'stylesheet',href: '/assets/movie_brick.css'}
-
 %div
   %div
-    = image_tag  "default.png"
+    - if movie.cover_photo.nil?
+      = image_tag  "default.png", class: "movie-brick-images"
+    - else
+      = image_tag  movie.cover_photo.path, class: "movie-brick-images"
   %div
     %p.movie-brick-movie-title
       = link_to "#{movie.name}", movie_path(movie)

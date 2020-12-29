@@ -3,6 +3,7 @@ class Movie < ApplicationRecord
   serialize :genres
 
   has_one :cover_photo, class_name: :Image, as: :imageable, dependent: :destroy
+  accepts_nested_attributes_for :cover_photo
 
   has_many :ratings, dependent: :destroy
   has_many :feedback, dependent: :destroy
@@ -14,7 +15,7 @@ class Movie < ApplicationRecord
 
   validates :name, presence: true
   validates :release_date, presence: true
-  validate :valid_release_date
+  validate :valid_release_date?
   validates :synopsis, presence: true
   validates :languages, presence: true, inclusion: {
     in: %w[english English Hindi hindi],
