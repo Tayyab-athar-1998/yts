@@ -68,3 +68,5 @@ gem 'jquery-rails'
 gem 'activeadmin'
 gem 'cancancan'
 gem 'draper'
+
+gem 'gon'
