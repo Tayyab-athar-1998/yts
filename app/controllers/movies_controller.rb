@@ -108,3 +108,5 @@ class MoviesController < ApplicationController
     )
   end
 end
+
+# for only merging in the soft reset branch
