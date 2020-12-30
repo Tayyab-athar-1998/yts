@@ -30,8 +30,8 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.includes(
       :cover_photo, :created_by, movie_roles: [:actor], feedback: [:user]
-    ).left_outer_joins(:likes, :ratings).select(
-      'movies.*, CAST(AVG(ratings.value) AS DECIMAL(10,2)) AS rating,count(likes.likeable_id) as number_of_likes'
+    ).left_outer_joins(:ratings).select(
+      'movies.*, CAST(AVG(ratings.value) AS DECIMAL(10,2)) AS rating'
     ).find params[:id]
     @reviews = @movie.feedback.select { |item| item.type == 'Review' }
     @comments = @movie.feedback.select { |item| item.type == 'Comment' }

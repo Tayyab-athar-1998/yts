@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20201220230102) do
 
   create_table "feedbacks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "content"
+    t.integer "likes_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(version: 20201220230102) do
     t.string "languages"
     t.string "genres"
     t.integer "feedbacks_count"
+    t.integer "likes_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
