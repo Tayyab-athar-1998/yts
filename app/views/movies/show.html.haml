@@ -20,7 +20,13 @@
             - @movie.video_quality.each do |video_quality|
               =video_quality
           %h2.show-movie-DOR
-            = "Likes: #{@movie.number_of_likes}"             
+            = "Likes: #{@movie.likes_count}"   
+            - if current_user
+              %button
+                - if @liked_by_current_user
+                  Unlike
+                - else 
+                  Like       
           %h2.show-movie-DOR
             = "Rating: #{@movie.rating}"
       .col-lg-3
@@ -78,4 +84,4 @@
         %h3
           Movie Reviews
         - @reviews.each do |review|
-          =render partial: "review_brick", locals: {review: review}
+          =render partial: 'review_brick', locals: {review: review}

@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   resources :movies do
     resources :feedbacks, only: [:create, :update, :destroy], shallow: true
   end
+
+  post '/like', to: 'like#index'
 end

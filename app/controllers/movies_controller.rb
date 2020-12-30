@@ -39,6 +39,9 @@ class MoviesController < ApplicationController
     @number_of_likes_on_comments = Comment.where_by_ids(comment_ids).calculate_number_of_likes
     @directors = @movie.movie_roles.select { |role| role.role_played == 'director' }
     @actors = @movie.movie_roles.select { |role| role.role_played == 'actor' }
+    if current_user
+      @liked_by_current_user = !(Like.movie_liked_by_current_user(params[:id],current_user.id).empty?)
+    end
   end
 
   # GET /movies/new
