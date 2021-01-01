@@ -8,5 +8,6 @@ module Types
     # end
 
     field :add_movie, mutation: Mutations::AddMovie, description: 'Add a new movie'
+    field :update_movie, mutation: Mutations::UpdateMovie, description: 'Update an existing movie'
   end
 end
