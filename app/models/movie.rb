@@ -34,6 +34,10 @@ class Movie < ApplicationRecord
   scope :search_on_rating, ->(minimum_rating) { left_outer_joins(:ratings).group('id').having('AVG(ratings.value) > ?', minimum_rating) unless minimum_rating.nil? || minimum_rating.empty?}
   scope :order_on_filter, ->(column_with_order) { left_outer_joins(:ratings, :likes).group('id').order(column_with_order) unless column_with_order.nil? || column_with_order.empty?}
 
+  def self.ransackable_scopes(_auth_object = nil)
+    [:search_on_title, :search_on_genre, :search_on_starting_year, :search_on_ending_year, :search_on_rating, :order_on_filter, :search_on_language, :search_on_video_quality]
+  end
+
   private
 
   def valid_release_date?
