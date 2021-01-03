@@ -353,6 +353,7 @@ DEPENDENCIES
   mysql2
   puma (~> 3.7)
   rails (~> 5.1.7)
+  ransack
   rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
