@@ -9,10 +9,9 @@ module Mutations
       current_user = User.find 1
 
       review = Comment.find comment_id
-      if review.user != current_user:
-        # returning false since current user is not the owner of the comment
-        # will raise proper error once auth is setup with graphql
-        { is_successful: false}
+      # returning false since current user is not the owner of the comment
+      # will raise proper error once auth is setup with graphql
+      { is_successful: false} unless review.user == current_user
       result = review.update_attributes(content: content)
       { is_successful: result }
     end

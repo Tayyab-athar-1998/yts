@@ -13,5 +13,6 @@ module Types
     field :update_reviews, mutation: Mutations::UpdateReview, description: 'Update or create a review'
     field :add_new_comment, mutation: Mutations::CreateComment, description: 'New comment'
     field :update_comment, mutation: Mutations::UpdateComment, description: 'Update comment'
+    field :login, mutation: Mutations::Login, description: 'Login'
   end
 end
