@@ -74,3 +74,7 @@ gem 'graphiql-rails'
 gem 'graphql', '1.9.18'
 gem 'ransack'
 gem 'devise-token_authenticatable'
+
+group :production do
+  gem 'pg'
+end
