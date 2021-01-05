@@ -9,6 +9,8 @@ class CreateMovies < ActiveRecord::Migration[5.1]
       t.string :video_quality
       t.string :languages
       t.string :genres
+      t.integer :feedbacks_count
+      t.integer :likes_count
 
       t.timestamps
     end

@@ -1,0 +1,11 @@
+%div
+  %div
+    - if movie.cover_photo.nil?
+      = image_tag  "default.png", class: "movie-brick-images"
+    - else
+      = image_tag  movie.cover_photo.path, class: "movie-brick-images"
+  %div
+    %p.movie-brick-movie-title
+      = link_to "#{movie.name}", movie_path(movie)
+    %p.movie-brick-movie-release-date
+      = movie.release_date

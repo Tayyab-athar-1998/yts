@@ -1,0 +1,19 @@
+.movie_brick{
+  height: 315px;
+  width: 210px;
+}
+
+.movie-brick-movie-title{
+  color: #fff;
+  margin-top: 8px;
+  margin-bottom: 0px;
+}
+.movie-brick-movie-release-date{
+  color: #919191;
+  margin-top: 0px;
+}
+
+.movie-brick-images{
+  width: 225px;
+  height: 225px;
+}

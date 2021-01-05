@@ -1,0 +1,25 @@
+-# TODO: styling header by looking into yts.mx
+%nav.navbar.navbar-expand-sm.bg-dark.navbar-dark
+  = image_tag  'logo.svg'
+  %ul.navbar-nav.ml-auto
+    %li.nav-item
+      %form.form-inline
+        %input.form-control.rounded-5{placeholder: 'Quick search'}
+    %li.nav-item
+      = link_to 'Home', '/', {class: 'nav-link'}
+    %li.nav-item
+      = link_to '4K', '/movies?quality=4K', {class: 'nav-link'}
+    %li.nav-item
+      = link_to 'Trending', '/movies?order="count(likes.likeable_id) Desc"', {class: 'nav-link'}
+    %li.nav-item
+      = link_to 'Browse Movies', '/movies', {class: 'nav-link'}
+    - if current_user
+      %li.nav-item
+        = link_to 'Add movie', '/movies/new', class: 'nav-link'
+      %li.nav-item
+        = link_to('Logout', destroy_user_session_path,  method: 'delete', class: 'nav-link')     
+    - else
+      %li.nav-item
+        = link_to 'Login', '/users/sign_in', {class: 'nav-link'}
+      %li.nav-item
+        = link_to 'Register', '/users/sign_up', {class: 'nav-link'}     

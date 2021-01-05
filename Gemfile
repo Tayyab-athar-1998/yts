@@ -61,3 +61,20 @@ end
 
 gem 'devise'
 gem 'mysql2'
+gem 'haml-rails'
+gem 'bootstrap'
+gem 'jquery-rails'
+
+gem 'activeadmin'
+gem 'cancancan'
+gem 'draper'
+
+gem 'gon'
+gem 'graphiql-rails'
+gem 'graphql', '1.9.18'
+gem 'ransack'
+gem 'devise-token_authenticatable'
+
+group :production do
+  gem 'pg'
+end
